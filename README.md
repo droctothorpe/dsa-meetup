@@ -42,11 +42,11 @@ Now comes the tricky part. There are two nested loops:
 ```python
 for index in range(array + 1):
   for coin in coins:
-      if coin <= index>:
+      if coin <= index:
           min(array[index], array[index - coin] + 1)
 ```
 
-The third line is deceptively complex. The best way to wrap your head around it is to walk through the iterations. Let's do that together.
+The fourth line is deceptively complex. The best way to wrap your head around it is to walk through the iterations. Let's do that together.
 
 | Code | Explanation |
 |------|-------------|
