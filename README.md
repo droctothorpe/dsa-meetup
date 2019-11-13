@@ -52,25 +52,22 @@ The third line is deceptively complex. The best way to wrap your head around it 
 |------|-------------|
 | `for index in range(array + 1)` | index = 0 |
 | `for coin in coins` | coin = 1 |
-| `if coin <= index` | 1 is greater than 0 so we do not update the value at the 0th index; this holds true for all three denominations |
+| `if coin <= index` | `1 <= 0` is false so we do not update the value at the 0th index; this holds true for all three denominations |
 | `for index in range(array + 1)` | index = 1 (we've completed our first inner loop and are now iterating the outer loop) |
 | `for coin in coins` | coin = 1 |
 | `if coin <= index` | `1 <= 1` is true |
 | `min(array[index], array[index - coin] + 1`) | Continued below for improved readability. |
 
 ```python
-array[index]
-= array[1]
-= 12
-
-array[index - coin] + 1
-= array[1 - 1] + 1
-= array[0] + 1 
-= 0 + 1
+min(array[index], array[index - coin] + 1`)
+= min(array[1], array[1-1] + 1)
+= min(12, array[0] + 1)
+= min(12, 0 + 1)
+= min(12, 1)
 = 1
 ```
 
-Thus, `min(array[index], array[index - coin] + 1)` boils down to `min(12, 1)`. Since `1 < 12` (in other news, the sky is blue), we update the value at the first index to 1. 
+`min(array[index], array[index - coin] + 1)` boils down to `min(12, 1)`. Since `1 < 12` (in other news, the sky is blue), we update the value at the first index to 1. 
 
 The updated array looks like this:
 ```python
@@ -116,14 +113,14 @@ min(array[index], array[index - coin] + 1)
 = min(4, 1)
 = 1
 ```
-Thus, by iterating the inner loop (`for coin in coins:`) and invoking `min`, the algorithm determines that there is a more efficient way to get the amount 4, i.e. with 1 x four coin instead of 4 x one coins.
+Thus, by iterating the inner loop (`for coin in coins`) and invoking `min`, the algorithm determines that there is a more efficient way to get the amount 4, i.e. with 1 x four coin instead of 4 x one coins.
 
 The updated array looks like this:
 ```python
 [0, 1, 2, 3, 4, 12, 12, 12, 12, 12, 12, 12]
 ```
 
-The completed array looks like this:
+When we complete the remaining iterations, the completed array looks like this:
 ```python
 [0, 1, 1, 2, 2, 1, 2, 2, 3, 3, 2, 3]
 ```
