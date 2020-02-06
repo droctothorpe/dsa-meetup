@@ -1,3 +1,7 @@
+# https://leetcode.com/problems/coin-change/
+
+# Time:
+# Space:
 def greedy_subtract(coins, amount):
     # Guardians
     if amount == 0:
@@ -12,7 +16,8 @@ def greedy_subtract(coins, amount):
             count += 1
     return count if amount == 0 else -1
 
-
+# Time:
+# Space:
 def greedy_divide(coins, amount):
     # Guardians
     if amount == 0:
@@ -27,7 +32,8 @@ def greedy_divide(coins, amount):
         amount -= quotient * coin
     return count if amount == 0 else -1
 
-
+# Time:
+# Space:
 def bottom_up(coins, amount):
     # Guardians
     if amount == 0:
@@ -42,7 +48,8 @@ def bottom_up(coins, amount):
                 dp[i] = min(dp[i], dp[i - coin] + 1)
     return dp[amount] if dp[amount] <= amount else -1
 
-
+# Time:
+# Space:
 def top_down(coins, amount):
     min_coins = amount
     if amount == 0:
@@ -56,7 +63,8 @@ def top_down(coins, amount):
                 min_coins = num_coins
     return min_coins
 
-
+# Time:
+# Space:
 def recursive(coins, amount):
     min_coins = amount
     if amount in coins:
@@ -70,7 +78,6 @@ def recursive(coins, amount):
 
 
 c, a = [1, 2, 5], 11
-# c, a = [1, 2, 3], 5
 c, a = [6, 5], 8
 c, a = [100, 1], 107
 print(recursive(c, a))
